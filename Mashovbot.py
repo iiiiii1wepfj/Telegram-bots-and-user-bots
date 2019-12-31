@@ -12,10 +12,18 @@ START MESSAGE
     """)
 
 
+def write(u, i):
+  with open("users.txt", "a") as file:
+    file.write("{} = {}\n".format(str(u), str(i)))
+
+    
+def read():
+  with open("users.txt", "r") as file:
+    return eval("dict({}".format(', '.join(file.readlines())))
 @app.on_message(Filters.private)
 def talk(_, m):
-    sets = {}
-    sets.update({m.message_id: m.from_user.id})
+    
+    write(m.message_id, m.from_user.id)
     if m.from_user.username != user:
         m.forward(user)
     else:
@@ -26,7 +34,7 @@ def talk(_, m):
                 if hasattr(m.reply_to_message.forward_from, "id"):
                     app.send_message(m.reply_to_message.forward_from.id, m.text)
                 else:
-                    app.send_message(sets[m.reply_to_message.message_id], m.text)
+                    app.send_message(read()[m.reply_to_message.message_id], m.text)
             except Exception as e:
                 print(f"{e!r}")
 
