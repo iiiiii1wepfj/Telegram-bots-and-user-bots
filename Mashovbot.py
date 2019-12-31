@@ -1,5 +1,6 @@
 from pyrogram import Client, Filters
-token = "YOUR TOKEN HERE"
+token = "YOUR TOKEN HERE" # הטוקן של הבוט שלכם
+user = "YOU USERNAME OR USER ID" # השם משתמש או האידי שלכם
 app = Client("licenseBot",
              bot_token=token)
 
@@ -7,14 +8,7 @@ app = Client("licenseBot",
 @app.on_message(Filters.private & Filters.command('start'))
 def start(_, m):
     m.reply("""
-Hi, Welcome, you are in licenses bot,
-SALE! global license, for all jetbrains products, and for all the life just in 250$  instead 650$,
-
-contact us here to more details
-
-[official license, forever].
-
-[Manual how to install the license](http://jetbrains.ga)..
+START MESSAGE
     """)
 
 
@@ -22,8 +16,8 @@ contact us here to more details
 def talk(_, m):
     sets = {}
     sets.update({m.message_id: m.from_user.id})
-    if m.from_user.username != "TgYonataNew":
-        m.forward("TgYonataNew")
+    if m.from_user.username != user:
+        m.forward(user)
     else:
         if not m.reply_to_message:
             m.reply("you must reply to message")
