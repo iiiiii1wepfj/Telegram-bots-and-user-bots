@@ -19,7 +19,7 @@ def write(u, i):
     
 def read():
   with open("users.txt", "r") as file:
-    return eval("dict({}".format(', '.join(file.readlines())))
+    return eval("dict({})".format(', '.join(file.readlines())))
 @app.on_message(Filters.private)
 def talk(_, m):
     
