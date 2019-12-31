@@ -1,7 +1,7 @@
 from pyrogram import Client, Filters
 token = "YOUR TOKEN HERE" # הטוקן של הבוט שלכם
-user = "YOU USERNAME OR USER ID" # השם משתמש או האידי שלכם
-app = Client("licenseBot",
+user = "YOUR USERNAME OR USER ID" # השם משתמש או האידי שלכם
+app = Client("MASHOVBOT",
              bot_token=token)
 
 
